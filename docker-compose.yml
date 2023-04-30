@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  webapp_1:
+    image: jmalloc/echo-server:latest
+    container_name: web1
+    restart: always
+    hostname: web1
+    networks:
+      - haproxy_network 
+  webapp_2:
+    image: jmalloc/echo-server:latest
+    container_name: web2
+    restart: always
+    hostname: web2
+    networks:
+      - haproxy_network 
+  haproxy:
+    image: haproxytech/haproxy-alpine:2.4
+    container_name: haproxy
+    restart: always
+    hostname: haproxy
+    networks:
+      - haproxy_network 
+    ports:
+      - "80:80"                         
+      - "8000:8000"                         
+      - "888:888"                         
+      - "443:443"                         
+    volumes:
+      - './haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg'
+      - './errors/:/etc/haproxy/errors/'
+networks:
+  haproxy_network:
+    name: haproxy_network 
+    driver: bridge

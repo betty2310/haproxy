@@ -1,0 +1,19 @@
+HTTP/1.1 502 Not Found
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>502 Not Found</title>
+    </head>
+    <body>
+        <main>
+            <h1>502 Not Found</h1>
+
+            This is my custom 502 Not Found page!
+        </main>
+    </body>
+</html>
